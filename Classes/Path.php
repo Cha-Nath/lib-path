@@ -13,6 +13,7 @@ class Path implements PathInterface {
     private $_config = '';
     private $_var = '';
     private $_log = '';
+    private $_vendor = '';
 
     private function __construct() {}
 
@@ -27,7 +28,8 @@ class Path implements PathInterface {
         ->setPublic()
         ->setConfig()
         ->setVar()
-        ->setLog();
+        ->setLog()
+        ->setVendor();
 
         return $this;
     }
@@ -39,6 +41,7 @@ class Path implements PathInterface {
     public function getConfig() : string { return $this->_config; }
     public function getVar() : string { return $this->_var; }
     public function getLog() : string { return $this->_log; }
+    public function getVendor() : string { return $this->_vendor; }
 
     #endregion
 
@@ -49,6 +52,7 @@ class Path implements PathInterface {
     public function setConfig(string $config = 'config', bool $auto = true) : self { $this->_config = $auto ? $this->getRoot() . $config . DIRECTORY_SEPARATOR : $config; return $this; }
     public function setVar(string $var = 'var', bool $auto = true) : self { $this->_var = $auto ? $this->getRoot() . $var . DIRECTORY_SEPARATOR : $var; return $this; }
     public function setLog(string $log = 'log', bool $auto = true) : self { $this->_log = $auto ? $this->getVar() . $log . DIRECTORY_SEPARATOR : $log; return $this; }
+    public function setVendor(string $vendor = 'vendor', bool $auto = true) : self { $this->_vendor = $auto ? $this->getRoot() . $vendor . DIRECTORY_SEPARATOR : $vendor; return $this; }
 
     #endregion
 }

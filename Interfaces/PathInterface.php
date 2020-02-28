@@ -49,6 +49,12 @@ interface PathInterface {
 
     /**
      *
+     * @return string
+     */
+    public function getVendor() : string;
+
+    /**
+     *
      * @param string $root
      * @param boolean $auto
      * @return self
@@ -86,4 +92,12 @@ interface PathInterface {
      * @return self
      */
     public function setLog(string $log = 'log', bool $auto = true);
+
+    /**
+     *
+     * @param string $vendor
+     * @param boolean $auto
+     * @return self
+     */
+    public function setVendor(string $vendor = 'vendor', bool $auto = true);
 }
