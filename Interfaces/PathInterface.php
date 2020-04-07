@@ -13,6 +13,14 @@ interface PathInterface {
     /**
      *
      * @param string $dir
+     * @param integer $mod
+     * @return self
+     */
+    public function _mkdir(string $dir, int $mod = 0777);
+
+    /**
+     *
+     * @param string $dir
      * @return self
      */
     public function init(string $dir);
@@ -46,6 +54,12 @@ interface PathInterface {
      * @return string
      */
     public function getLog() : string;
+
+    /**
+     *
+     * @return string
+     */
+    public function getCache() : string;
 
     /**
      *
@@ -92,6 +106,14 @@ interface PathInterface {
      * @return self
      */
     public function setLog(string $log = 'log', bool $auto = true);
+
+    /**
+     *
+     * @param string $log
+     * @param boolean $auto
+     * @return self
+     */
+    public function setCache(string $cache = 'log', bool $auto = true);
 
     /**
      *
