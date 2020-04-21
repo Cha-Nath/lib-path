@@ -16,7 +16,7 @@ interface PathInterface {
      * @param integer $mod
      * @return self
      */
-    public function _mkdir(string $dir, int $mod = 0777);
+    public function _mkdir(string $dir, string $mode = '0764');
 
     /**
      *

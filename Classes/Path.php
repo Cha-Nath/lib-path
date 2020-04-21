@@ -37,9 +37,13 @@ class Path implements PathInterface {
         return $this;
     }
 
-    public function _mkdir(string $dir, int $mode = 0764) : self {
+    public function _mkdir(string $dir, string $mode = '0764') : self {
+        
+        $perm = octdec(substr(sprintf('%o', fileperms($dir)), -4));
+        $mode = octdec($mode);
         if(!is_dir($dir)) mkdir($dir, $mode);
-        if(!empty($perm = substr(sprintf('%o', fileperms($dir)), -4)) && ($mode > (int) $perm)) chmod($dir, $mode);
+        if(!empty($perm) && ($mode > $perm)) chmod($dir, $mode);
+
         return $this;
     }
 
