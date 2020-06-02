@@ -6,7 +6,8 @@ interface PathInterface {
 
     /**
      *
-     * @return self instance
+     * @param string $instance
+     * @return Path
      */
     public static function i(string $instance = 'i');
 
