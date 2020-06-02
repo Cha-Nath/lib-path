@@ -6,7 +6,7 @@ use nlib\Path\Interfaces\PathInterface;
 
 class Path implements PathInterface {
 
-    private static $_i = null;
+    private static $_i = [];
 
     private $_root = '';
     private $_public = '';
@@ -19,10 +19,11 @@ class Path implements PathInterface {
 
     private function __construct() {}
 
-    public static function i() : Path { 
-        if(empty(self::$_i)) self::$_i = new Path;
+    public static function i(string $instance = 'i') : Path { 
+        if(empty(self::$_i) || !(array_key_exists($instance, self::$_i) && !empty(self::$_i[$instance])))
+            self::$_i[$instance] = new Path;
 
-        return self::$_i;
+        return self::$_i[$instance];
     }
 
     public function init(string $dir) : self {
