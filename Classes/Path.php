@@ -12,6 +12,7 @@ class Path implements PathInterface {
     private $_public = '';
     private $_config = '';
     private $_src = '';
+    private $_resources = '';
     private $_var = '';
     private $_log = '';
     private $_cache = '';
@@ -31,6 +32,7 @@ class Path implements PathInterface {
         ->setPublic()
         ->setConfig()
         ->setSrc()
+        ->setResources()
         ->setVar()
         ->setLog()
         ->setVendor();
@@ -54,6 +56,7 @@ class Path implements PathInterface {
     public function getPublic() : string { return $this->_public; }
     public function getConfig() : string { return $this->_config; }
     public function getSrc() : string { return $this->_src; }
+    public function getResources() : string { return $this->_resources; }
     public function getVar() : string { return $this->_var; }
     public function getLog() : string { return $this->_log; }
     public function getCache() : string { return $this->_cache; }
@@ -67,6 +70,7 @@ class Path implements PathInterface {
     public function setPublic(string $public = 'public', bool $auto = true) : self { $this->_public = $auto ? $this->getRoot() . $public . DIRECTORY_SEPARATOR : $public; return $this; }
     public function setConfig(string $config = 'config', bool $auto = true) : self { $this->_config = $auto ? $this->getRoot() . $config . DIRECTORY_SEPARATOR : $config; return $this; }
     public function setSrc(string $src = 'src', bool $auto = true) : self { $this->_src = $auto ? $this->getRoot() . $src . DIRECTORY_SEPARATOR : $src; return $this; }
+    public function setResources(string $resources = 'Resources', bool $auto = true) : self { $this->_resources = $auto ? $this->getSrc() . $resources . DIRECTORY_SEPARATOR : $resources; return $this; }
     public function setVar(string $var = 'var', bool $auto = true) : self { $this->_var = $auto ? $this->getRoot() . $var . DIRECTORY_SEPARATOR : $var; $this->_mkdir($this->_var); return $this; }
     public function setLog(string $log = 'log', bool $auto = true) : self { $this->_log = $auto ? $this->getVar() . $log . DIRECTORY_SEPARATOR : $log; $this->_mkdir($this->_log); return $this; }
     public function setCache(string $cache = 'cache', bool $auto = true) : self { $this->_cache = $auto ? $this->getVar() . $cache . DIRECTORY_SEPARATOR : $cache; $this->_mkdir($this->_cache); return $this; }
