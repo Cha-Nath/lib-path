@@ -42,10 +42,10 @@ class Path implements PathInterface {
 
     public function _mkdir(string $dir, string $mode = '0770') : self {
         
-        $perm = octdec(substr(sprintf('%o', fileperms($dir)), -4));
-        $mode = octdec($mode);
-        if(!is_dir($dir)) mkdir($dir, $mode);
-        if(!empty($perm) && ($mode > $perm)) chmod($dir, $mode);
+        // $perm = octdec(substr(sprintf('%o', fileperms($dir)), -4));
+        // $mode = octdec($mode);
+        // if(!is_dir($dir)) mkdir($dir, $mode);
+        // if(!empty($perm) && ($mode > $perm)) chmod($dir, $mode);
 
         return $this;
     }
