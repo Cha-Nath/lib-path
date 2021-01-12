@@ -35,6 +35,7 @@ class Path implements PathInterface {
         ->setResources()
         ->setVar()
         ->setLog()
+        ->setCache()
         ->setVendor();
 
         return $this;
